@@ -2,18 +2,54 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <title>Mouvy | {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('style/style.css') }}">
+        <link rel="icon" type="image/png" href="{{ asset('img/mouv-icon.png') }}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+
         {% endblock %}
     </head>
     <body>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li>
+                    <a href="{{ path('movie_index') }}">Films</a>
+                </li>
+                <li>
+                    <a href="{{ path('platform_index') }}">Plateformes</a>
+                </li>
+            </ul>
+            <div>
+                <img src="{{ asset('img/mouvy-ban.png') }}" alt="mouvy-ban">
+            </div>
+            <div class="user">
+                {% if app.user %}
+{#                    <img id="user_photo" src="https://img.icons8.com/ios/452/user--v1.png" alt="">#}
+                    <div class="name">
+                        Hello <span id="username">{{ app.user.username }}</span> !
+                    </div>
+                    <ul>
+                    {#                      <li><a href="{{ path('mon-compte') }}">Mon Compte</a></li>#}
+                    <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                {% else %}
+                    <div class="user-menu flex">
+                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                        <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                    </div>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
         {% block body %}{% endblock %}
     </body>
 </html>

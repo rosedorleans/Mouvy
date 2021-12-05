@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlatformRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class Platform
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Movie::class, mappedBy="platform")
+     */
+    private $movies;
+
+    public function __construct()
+    {
+        $this->movies = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,33 @@ class Platform
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Movie[]
+     */
+    public function getMovies(): Collection
+    {
+        return $this->movies;
+    }
+
+    public function addMovie(Movie $movie): self
+    {
+        if (!$this->movies->contains($movie)) {
+            $this->movies[] = $movie;
+            $movie->addPlatform($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMovie(Movie $movie): self
+    {
+        if ($this->movies->removeElement($movie)) {
+            $movie->removePlatform($this);
+        }
 
         return $this;
     }

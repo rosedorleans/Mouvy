@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MovieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class Movie
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Platform::class, inversedBy="movies")
+     */
+    private $platform;
+
+    public function __construct()
+    {
+        $this->platform = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,30 @@ class Movie
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Platform[]
+     */
+    public function getPlatform(): Collection
+    {
+        return $this->platform;
+    }
+
+    public function addPlatform(Platform $platform): self
+    {
+        if (!$this->platform->contains($platform)) {
+            $this->platform[] = $platform;
+        }
+
+        return $this;
+    }
+
+    public function removePlatform(Platform $platform): self
+    {
+        $this->platform->removeElement($platform);
 
         return $this;
     }
