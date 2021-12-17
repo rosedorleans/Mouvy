@@ -44,7 +44,6 @@ nav .user {
     flex-direction: column;
     gap: 10px;
     align-self: center;
-    text-align: center;
 }
 
 nav .user a:hover {
@@ -63,4 +62,43 @@ h1 {
 
 #username {
     font-weight: bold;
+}
+
+
+.home-body {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 100px auto 0;
+}
+
+.home-body a {
+    min-width: 450px;
+    align-self: center;
+    text-align: center;
+    text-decoration: none;
+    color: #000 !important;
+    -webkit-transition: .5s;
+}
+
+.home-body a:hover {
+    transform: scale(1.1);
+    -webkit-transition: .5s;
+}
+
+.home-body a img {
+    height: auto;
+    min-width: 270px;
+    max-width: 330px;
+}
+
+.home-body a p {
+    font-family: 'Bakbak One', cursive;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 75px;
+}
+
+.home-body_serie a p {
+    margin-left: 17px;
 }
