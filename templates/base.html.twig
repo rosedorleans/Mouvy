@@ -3,8 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Mouvy | {% block title %}{% endblock %}</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="{{ asset('style/style.css') }}">
         <link rel="icon" type="image/png" href="{{ asset('img/mouv-icon.png') }}" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,17 +24,17 @@
                     <a href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li>
-                    <a href="#">Films</a>
+                    <a href="{{ path('movies') }}">Films</a>
                 </li>
                 <li>
                     <a href="#">Séries</a>
                 </li>
                 <li>
-                    <a href="#">Plateformes</a>
+                    <a href="{{ path('platforms') }}">Plateformes</a>
                 </li>
             </ul>
             <div>
-                <img src="{{ asset('img/mouvy-ban2.png') }}" alt="mouvy-ban">
+{#                <img src="{{ asset('img/mouvy-ban.png') }}" alt="mouvy-ban">#}
             </div>
             <div class="user">
                 {% if app.user %}
@@ -56,5 +55,6 @@
             </div>
         </nav>
         {% block body %}{% endblock %}
+        <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

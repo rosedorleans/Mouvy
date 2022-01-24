@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Platformes{% endblock %}
 
 {% block body %}
     <div class="home-body">
-        <a href="#" class="home-body_film">
-            <img src="{{ asset('img/marty.png') }}" alt="film">
-            <p>Films</p>
-        </a>
-        <a href="#" class="home-body_serie">
-            <img src="{{ asset('img/jon.png') }}" alt="serie">
-            <p>Séries</p>
-        </a>
+        <ul id="platforms_list">
+            <li id="platform_1">Netflix</li>
+            <li id="platform_2">Amazon Prime Vidéo</li>
+            <li id="platform_3">Disney Plus</li>
+            <li id="platform_4">Canal+</li>
+            <li id="platform_5">OCS Go</li>
+            <ul id="platform_list_complementary"></ul>
+        </ul>
+
     </div>
 {% endblock %}
