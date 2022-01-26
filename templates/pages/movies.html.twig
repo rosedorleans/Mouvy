@@ -3,16 +3,27 @@
 {% block title %}Films{% endblock %}
 
 {% block body %}
-    <div class="home-body">
+    <div class="movie-body">
+        <h1></h1>
         <div class="movie-search">
             <label for="movie_search">Lorem ipsum dolor sit</label>
             <input type="text" id="movie_search">
             <button id="movie_search_btn">Chercher</button>
         </div>
+        <div class="movie-result"></div>
         <div class="popup-overlay hidden"></div>
         <div class="popup hidden">
             <span class="close">X</span>
-            <div id="movie_page"></div>
+            <div class="movie-modal"></div>
+            <span class="add-to-list">+</span>
+            <div class="popup-overlay-list hidden"></div>
+            <div class="popup-list hidden">
+                <span class="close-list">X</span>
+                <div class="list-modal">
+                    <p>Lorem ipsum dolor sit amet ?</p>
+                    <ul class="ul-lists"></ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
