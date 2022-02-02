@@ -1,7 +1,12 @@
-
-body {
+html, body {
+    height: 100%;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
 }
 
 /* BASE */
@@ -128,14 +133,16 @@ h1 {
 /* MOVIES */
 
 .movie-body {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
 }
 
 .movie-search {
     display: flex;
     flex-direction: column;
     width: 20%;
-    margin: 75px auto;
     align-items: center;
     gap: 20px;
 }
@@ -153,12 +160,54 @@ h1 {
     cursor: pointer;
 }
 
+.spinner {
+    position: absolute;
+    right: 100px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.lds-ring {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    align-self: center;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+.lds-ring div {
+    position: absolute;
+    display: block;
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: rgb(184, 184, 184) transparent transparent transparent;
+}
+
 .movie-result {
     width: 65%;
-    margin: 0 auto;
+    margin: 0 auto 100px;
 }
 
 .movie-result-box {
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+    margin: 20px 0;
     padding: 15px 55px;
     opacity: .8;
     background-color: #e3e3e3;
@@ -171,6 +220,12 @@ h1 {
     background-color: #e5e5e5;
     box-shadow: 0 0 10px 0 #868686;
     cursor: pointer;
+}
+
+.movie-result-box img {
+    height: 200px;
+    width: auto;
+    margin: 10px 0;
 }
 
 /* popup */
@@ -237,4 +292,16 @@ h1 {
 
 .poster {
     width: 50px;
+}
+
+
+
+/* FOOTER */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+    background-color: #5eb5e0;
 }

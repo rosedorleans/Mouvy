@@ -2,6 +2,7 @@ const url_base = "https://www.omdbapi.com/?apikey=72357c68&";
 
 $("#movie_search_btn").off('click');
 $('#movie_search_btn').on('click', function() {
+    $('.spinner').show();
     $('.movie-result').empty()
     let search = document.querySelector('#movie_search').value
     $.ajax({
@@ -13,16 +14,26 @@ $('#movie_search_btn').on('click', function() {
                     $.each(data, function (key, value) {
                         let imdbId = value.imdbID
                         $.ajax({
-                            url: url_base + 'i=' + imdbId,
+                            url: url_base + 'type=movie&i=' + imdbId,
                             type: 'GET',
                             success: function (response) {
                                 $('.movie-result').append(
-                                    '<div class="movie-result-box" data-id="'+imdbId+'">' +
-                                    '<h2 class="title open-modal">' + response.Title + '</h2>' +
-                                    '<p class="plot">' + response.Plot + '</p>' +
-                                    '<p class="genres">' + response.Genre + '</p>' +
+                                    '<div class="movie-result-box" data-id="'+imdbId+'">'+
+                                        '<div>'+
+                                            '<h2 class="title open-modal">'+response.Title+'</h2>'+
+                                            '<p class="plot">'+response.Plot+'</p>'+
+                                            '<p class="genres">'+response.Genre+'</p>'+
+                                        '</div>'+
+                                        '<div>'+
+                                            '<img src="'+response.Poster+'" alt="poster">'+
+                                        '</div>'+
                                     '</div>'
-                                )
+                                ).addClass('ajaxComplete')
+                                if($('.movie-result').hasClass('ajaxComplete')){
+                                    $('.spinner').hide();
+                                } else {
+                                    $('.spinner').hide();
+                                }
                                 $('.movie-result-box').unbind( "click" ).click(function(e){
                                     openDetails($(this),e, response);
                                 })

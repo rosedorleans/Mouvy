@@ -18,43 +18,46 @@
         {% endblock %}
     </head>
     <body>
-        <nav>
-            <ul class="menu">
-                <li>
-                    <a href="{{ path('home') }}">Accueil</a>
-                </li>
-                <li>
-                    <a href="{{ path('movies') }}">Films</a>
-                </li>
-                <li>
-                    <a href="#">Séries</a>
-                </li>
-                <li>
-                    <a href="{{ path('platforms') }}">Plateformes</a>
-                </li>
-            </ul>
-            <div>
-{#                <img src="{{ asset('img/mouvy-ban.png') }}" alt="mouvy-ban">#}
-            </div>
-            <div class="user">
-                {% if app.user %}
-{#                    <img id="user_photo" src="https://img.icons8.com/ios/452/user--v1.png" alt="">#}
-                    <div class="name">
-                        Hello <span id="username">{{ app.user.username }}</span> !
-                    </div>
-                    <ul>
-                    {#                      <li><a href="{{ path('mon-compte') }}">Mon Compte</a></li>#}
-                    <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
-                {% else %}
-                    <div class="user-menu flex">
-                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-                        <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
-                    </div>
-                    </ul>
-                {% endif %}
-            </div>
-        </nav>
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <a href="{{ path('home') }}">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('movies') }}">Films</a>
+                    </li>
+                    <li>
+                        <a href="#">Séries</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('platforms') }}">Plateformes</a>
+                    </li>
+                </ul>
+                <div>
+    {#                <img src="{{ asset('img/mouvy-ban.png') }}" alt="mouvy-ban">#}
+                </div>
+                <div class="user">
+                    {% if app.user %}
+    {#                    <img id="user_photo" src="https://img.icons8.com/ios/452/user--v1.png" alt="">#}
+                        <div class="name">
+                            Hello <span id="username">{{ app.user.username }}</span> !
+                        </div>
+                        <ul>
+                        {#                      <li><a href="{{ path('mon-compte') }}">Mon Compte</a></li>#}
+                        <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                    {% else %}
+                        <div class="user-menu flex">
+                            <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                            <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                        </div>
+                        </ul>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
+{#        <footer></footer>#}
         <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>
