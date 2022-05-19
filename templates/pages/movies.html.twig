@@ -4,10 +4,32 @@
 
 {% block body %}
     <div class="movie_body">
-        <h1>Lorem ipsum</h1>
+        <h1>Films</h1>
         <div class="movie_search">
-            <label for="movie_search">Lorem ipsum dolor sit</label>
-            <input type="text" id="movie_search">
+            <input type="text" id="movie_search" placeholder="Chercher par titre">
+            <div class="movie_filters">
+                <div>
+                    <span class="genre action_genre">Action</span>
+                    <span class="genre adventure_genre">Adventure</span>
+                    <span class="genre animation_genre">Animation</span>
+                    <span class="genre biography_genre">Biography</span>
+                    <span class="genre comedy_genre">Comedy</span>
+                    <span class="genre crime_genre">Crime</span>
+                    <span class="genre documentary_genre">Documentary</span>
+                    <span class="genre drama_genre">Drama</span>
+                </div>
+                <div>
+                    <span class="genre fantasy_genre">Fantasy</span>
+                    <span class="genre history_genre">History</span>
+                    <span class="genre horror_genre">Horror</span>
+                    <span class="genre music_genre">Music</span>
+                    <span class="genre mystery_genre">Mystery</span>
+                    <span class="genre romance_genre">Romance</span>
+                    <span class="genre thriller_genre">Thriller</span>
+                    <span class="genre war_genre">War</span>
+                    <span class="genre western_genre">Western</span>
+                </div>
+            </div>
             <button id="movie_search_btn">Chercher</button>
             <div class="spinner">
                 <div class="lds-ring" id="spinner">
@@ -17,13 +39,16 @@
                     <div></div>
                 </div>
             </div>
+            <p id="error_message">Erreur, veuillez recharger la page et recommencer.</p>
         </div>
         <div class="movie_result"></div>
         <div class="popup_overlay hidden"></div>
         <div class="popup hidden">
-            <span class="close">X</span>
+            <div class="popup_header">
+                <img src="{{ asset('img/left-arrow.png') }}" class="close" alt="fleche">
+                <img src="{{ asset('img/add.png') }}" class="add_to_list" alt="plus">
+            </div>
             <div class="movie_modal"></div>
-            <span class="add_to_list">+</span>
             <div class="popup_overlay_list hidden"></div>
             <div class="popup_list hidden">
                 <span class="close_list">X</span>
